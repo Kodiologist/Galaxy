@@ -20,12 +20,12 @@ use constant TEXTAREA_MAX_CHARS =>
     1_000 * 6;   # About 1,000 words.
 
 use constant FREQS =>
-   ('?' => 'Unknown',
-    0 => 'Never',
-    1 => 'Rarely',
-    2 => 'Sometimes',
+   (4 => 'Always',
     3 => 'Usually',
-    4 => 'Always');
+    2 => 'Sometimes',
+    1 => 'Rarely',
+    0 => 'Never',
+    '?' => 'Unknown');
 
 use constant GENDERS =>
    (['Male', 'Male'] => '',
@@ -59,25 +59,25 @@ sub demographics ()
 
     $o->multiple_choice_page('education',
         p 'What is the highest level of education you have achieved?',
-        ['Low', 'A'] => 'Did not complete high school',
-        ['HighSchool', 'B'] => 'High-school graduate',
-        ['College', 'C'] => 'Some college',
-        ['Ugrad', 'D'] => q{Undergraduate degree (e.g., associate or bachelor's)},
-        ['Grad', 'E'] => q{Graduate degree (e.g., master's or doctorate)});
+        ['Grad', '1'] => q{Graduate degree (e.g., master's or doctorate)},
+        ['Ugrad', '2'] => q{Undergraduate degree (e.g., associate or bachelor's)},
+        ['College', '3'] => 'Some college',
+        ['HighSchool', '4'] => 'High-school graduate',
+        ['Low', '5'] => 'Did not complete high school');
      
     $o->multiple_choice_page('income',
         p 'What is your personal income per year (earned or from government benefits)?',
-        0 => 'Nothing',
-        1 => '$1 to $4,999',
-        5 => '$5,000 to $9,999',
-        10 => '$10,000 to $19,999',
-        20 => '$20,000 to $29,999',
-        30 => '$30,000 to $39,999',
-        40 => '$40,000 to $59,999',
-        60 => '$60,000 to $79,999',
-        80 => '$80,000 to $99,999',
+        150 => '$150,000 or more',
         100 => '$100,000 to $149,999',
-        150 => '$150,000 or more');
+        80 => '$80,000 to $99,999',
+        60 => '$60,000 to $79,999',
+        40 => '$40,000 to $59,999',
+        30 => '$30,000 to $39,999',
+        20 => '$20,000 to $29,999',
+        10 => '$10,000 to $19,999',
+        5 => '$5,000 to $9,999',
+        1 => '$1 to $4,999',
+        0 => 'Nothing');
 
     $o->yesno_page('ever_employed',
         p 'Have you ever been employed?');}
@@ -229,11 +229,11 @@ sub drug_use ()
      if ($o->getu('alcohol_freq') ne '0')
         {$o->multiple_choice_page('alcohol_amount',
             p 'When you do drink before sex, how much do you typically drink?',
-            0 => 'Not enough to feel an effect',
-            1 => 'Enough to feel a slight buzz or be a little tipsy',
-            2 => 'Enough to feel a significant buzz or be somewhat tipsy',
+            4 => 'Enough to pass out or black out',
             3 => 'Enough to get drunk',
-            4 => 'Enough to pass out or black out');
+            2 => 'Enough to feel a significant buzz or be somewhat tipsy',
+            1 => 'Enough to feel a slight buzz or be a little tipsy',
+            0 => 'Not enough to feel an effect');
         $o->checkboxes_page('alcohol_reasons',
             p 'When you do drink before sex, what are the primary reasons?',
             AT_LEAST => 1,
@@ -265,11 +265,11 @@ sub drug_use ()
                 p 'Which prescription medications?');
         $o->multiple_choice_page('drugs_amount',
             p 'When you use drugs before or during sex, how much do you typically use?',
-            0 => 'Not enough to feel an effect',
-            1 => 'Enough to feel a slight effect',
-            2 => 'Enough to feel a significant effect',
+            4 => 'Enough to pass out or go out of control',
             3 => 'Enough to feel a strong effect',
-            4 => 'Enough to pass out or go out of control');
+            2 => 'Enough to feel a significant effect',
+            1 => 'Enough to feel a slight effect',
+            0 => 'Not enough to feel an effect');
         $o->checkboxes_page('drugs_reasons',
             p 'When you use drugs before or during sex, what are the primary reasons?',
             AT_LEAST => 1,
@@ -289,8 +289,8 @@ sub safe_sex ()
     sub condom_page
        {$o->multiple_choice_page($_[0],
             $_[1],
-            'N/A' => 'I never have this kind of sex',
-            FREQS);}
+            FREQS,
+            'N/A' => 'I never have this kind of sex');}
 
     if ($male)
        {sub condom_while
@@ -309,8 +309,8 @@ sub safe_sex ()
             p q{How often do your male sex partners wear a condom while you have vaginal sex?};
         $o->multiple_choice_page('contraceptive_pills',
             p q{If you take birth-control pills to prevent pregnancy, how regularly do you take your pills as prescribed?},
-            'N/A' => q{I don't take birth-control pills to prevent pregnancy},
-            FREQS);}
+            FREQS,
+            'N/A' => q{I don't take birth-control pills to prevent pregnancy});}
 
     condom_page 'condom_fellatio_to',
         p q{How often do your male sex partners wear a condom while you give them oral sex (fellatio; a blowjob)?};
@@ -356,20 +356,20 @@ sub externalizing ()
             cat
               (p 'For each statement, select the answer that describes you best.',
                p $items{$_}),
-            1 => 'False',
-            2 => 'Somewhat false',
+            4 => 'True',
             3 => 'Somewhat true',
-            4 => 'True');}}
+            2 => 'Somewhat false',
+            1 => 'False');}}
 
 # ** Sexual orientation and sexual experience
 
 sub orientation_and_experience ()
    {$o->multiple_choice_page('rship',
        p 'What is your current relationship status?',
-       0 => 'Single',
-       1 => 'Dating',
+       3 => 'Married, domestically partnered, or in a civil union',
        2 => 'Engaged',
-       3 => 'Married, domestically partnered, or in a civil union');
+       1 => 'Dating',
+       0 => 'Single');
     $o->getu('rship') ne '0' and
         $o->multiple_choice_page('partner_gender',
             p 'What gender is your romantic partner?',
@@ -386,20 +386,20 @@ sub orientation_and_experience ()
 
     $o->multiple_choice_page('attract_to_f',
         p 'Which of the following best describes your feelings of sexual attraction to women?',
-        '?' => 'Not sure',
-        0 => 'Not at all sexually attracted',
-        1 => 'A little sexually attracted',
-        2 => 'Somewhat sexually attracted',
+        4 => 'Very sexually attracted',
         3 => 'A good deal sexually attracted',
-        4 => 'Very sexually attracted');
+        2 => 'Somewhat sexually attracted',
+        1 => 'A little sexually attracted',
+        0 => 'Not at all sexually attracted',
+        '?' => 'Not sure');
     $o->multiple_choice_page('attract_to_m',
         p 'Which of the following best describes your feelings of sexual attraction to men?',
-        '?' => 'Not sure',
-        0 => 'Not at all sexually attracted',
-        1 => 'A little sexually attracted',
-        2 => 'Somewhat sexually attracted',
+        4 => 'Very sexually attracted',
         3 => 'A good deal sexually attracted',
-        4 => 'Very sexually attracted');
+        2 => 'Somewhat sexually attracted',
+        1 => 'A little sexually attracted',
+        0 => 'Not at all sexually attracted',
+        '?' => 'Not sure');
 
     sub sex_amount
        {$o->nonneg_int_entry_page("sex_amount.$_[0]",
