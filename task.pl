@@ -445,11 +445,6 @@ $o = new Tversky
     #preview => sub
     #   {decision undef, 20, 'today', 60, 'in 1 month';},
 
-    #after_consent_prep => sub
-    #   {my $o = shift;
-    #    $o->assign_permutation('task_order_1', ',', keys %tasks);
-    #    $o->assign_permutation('task_order_2', ',', keys %tasks);},
-
     head => do {local $/; <DATA>},
     footer => "\n\n\n</body></html>\n",
 
