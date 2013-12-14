@@ -282,6 +282,7 @@ sub safe_sex ()
             $_[1],
             'N/A' => 'I never have this kind of sex',
             FREQS);}
+
     if ($male)
        {sub condom_while
             {p "How often do you wear a condom while $_[0]?"}
@@ -293,6 +294,7 @@ sub safe_sex ()
             condom_while q{giving anal sex to a man (penetrating a man's anus with your penis; topping)};
         condom_page 'condom_analpen_to_f',
             condom_while q{giving anal sex to a woman (penetrating a woman's anus with your penis)};}
+
     if ($female)
        {condom_page 'condom_coitus_f',
             p q{How often do your male sex partners wear a condom while you have vaginal sex?};
@@ -300,10 +302,19 @@ sub safe_sex ()
             p q{If you take birth-control pills to prevent pregnancy, how regularly do you take your pills as prescribed?},
             'N/A' => q{I don't take birth-control pills to prevent pregnancy},
             FREQS);}
+
     condom_page 'condom_fellatio_to',
         p q{How often do your male sex partners wear a condom while you give them oral sex (fellatio; a blowjob)?};
     condom_page 'condom_analpen_rec',
-        p q{How often do your male sex partners wear a condom while you are receiving anal sex (being anally penetrated by a man's penis; "bottoming")?};}
+        p q{How often do your male sex partners wear a condom while you are receiving anal sex (being anally penetrated by a man's penis; "bottoming")?};
+
+    $o->checkboxes_page('partner_search',
+        p 'Where do you actively look for sex partners? (Check all that apply.)',
+        nightlife => 'Clubs or bars',
+        public => 'Public places (e.g., shops, subway)',
+        work => 'Your school or workplace',
+        web => 'Websites',
+        smartphone => 'Smartphone apps (e.g., Grindr)');}
 
 # ** Externalizing
 
