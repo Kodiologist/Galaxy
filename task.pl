@@ -209,7 +209,7 @@ sub preferences ()
         rate_preference "p.$_", $item{text};}
 
     $o->text_entry_page('p.other',
-        p q{<strong>Optional:</strong> Is there anything you find particularly sexually appealing that we didn't ask about? Is there anything else you'd like to add to the responses you've provided?},
+        q{<p class="long"><strong>Optional:</strong> Is there anything you find particularly sexually appealing that we didn't ask about? Or is there anything else you'd like to add to the responses you've provided?</p>},
         multiline => 1,
         accept_blank => 1,
         max_chars => TEXTAREA_MAX_CHARS);}
