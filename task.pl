@@ -198,6 +198,12 @@ sub preferences ()
    {my $male = $o->getu('gender') eq 'Male';
     my $female = $o->getu('gender') eq 'Female';
 
+    $o->okay_page('preferences_instructions', cat
+
+        q{<p class="long">On the following pages, you will see descriptions of various activities. We would like you to consider how sexually appealing you find each of these activities. Importantly, we are not asking you whether you would really do these things, or if you've already done them. Try to put aside concerns such as safety, religion, politics, morality, and society's expectations. Answer using only your sexual and romantic feelings.</p>},
+
+        q{<p class="long">We use the word "sex" to mean any kind of sexual contact (not just sexual intercourse, but also, for example, oral sex). We use the phrase "your sex partner" to mean someone you might have sex with.</p>});
+
     $o->assign_permutation('preferences_permutation',
         ',', keys %pref_items);
     foreach (split qr/,/, $o->getu('preferences_permutation'))
@@ -208,7 +214,7 @@ sub preferences ()
            {$female or next;}
         rate_preference "p.$_", $item{text};}
 
-    $o->text_entry_page('p.other',
+    $o->text_entry_page('preferences_other',
         q{<p class="long"><strong>Optional:</strong> Is there anything you find particularly sexually appealing that we didn't ask about? Or is there anything else you'd like to add to the responses you've provided?</p>},
         multiline => 1,
         accept_blank => 1,
