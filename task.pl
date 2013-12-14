@@ -228,14 +228,14 @@ sub drug_use ()
         FREQS);
      if ($o->getu('alcohol_freq') ne '0')
         {$o->multiple_choice_page('alcohol_amount',
-            p 'When you do drink before sex, how much do you typically drink?',
+            p 'When you drink before sex, how much do you typically drink?',
             4 => 'Enough to pass out or black out',
             3 => 'Enough to get drunk',
             2 => 'Enough to feel a significant buzz or be somewhat tipsy',
             1 => 'Enough to feel a slight buzz or be a little tipsy',
             0 => 'Not enough to feel an effect');
         $o->checkboxes_page('alcohol_reasons',
-            p 'When you do drink before sex, what are the primary reasons?',
+            p 'When you drink before sex, what are the primary reasons?',
             AT_LEAST => 1,
             relax => 'To loosen up and relax',
             improve_performance => 'To improve sexual performance',
