@@ -50,6 +50,7 @@ sub demographics ()
 
     $o->checkboxes_page('race',
         p 'What is your race or ethnicity?',
+        AT_LEAST => 1,
         asian => 'Asian, Pacific Islander, or Native Hawaiian',
         black => 'Black',
         hisp => 'Hispanic or Latino',
@@ -229,6 +230,7 @@ sub drug_use ()
             4 => 'Enough to pass out or black out');
         $o->checkboxes_page('alcohol_reasons',
             p 'When you do drink before sex, what are the primary reasons?',
+            AT_LEAST => 1,
             relax => 'To loosen up and relax',
             improve_performance => 'To improve sexual performance',
             performance_anxiety => 'To reduce performance anxiety',
@@ -243,6 +245,7 @@ sub drug_use ()
      if ($o->getu('drugs_freq') ne '0')
         {$o->checkboxes_page('drugs_which',
             p 'Which drugs?',
+            AT_LEAST => 1,
             cannabis => 'Cannabis',
             meth => 'Methamphetamine',
             mdma => 'MDMA (molly)',
@@ -264,6 +267,7 @@ sub drug_use ()
             4 => 'Enough to pass out or go out of control');
         $o->checkboxes_page('drugs_reasons',
             p 'When you use drugs before or during sex, what are the primary reasons?',
+            AT_LEAST => 1,
             relax => 'To loosen up and relax',
             improve_performance => 'To improve sexual performance',
             performance_anxiety => 'To reduce performance anxiety',
