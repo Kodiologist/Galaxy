@@ -490,13 +490,13 @@ __DATA__
         margin-left: auto; margin-right: auto;}
     div.multiple_choice_box > div.row,  div.checkboxes_box > div.row
        {display: table-row;}
-    div.multiple_choice_box > div.row > div
+    div.multiple_choice_box > div.row > div, div.multiple_choice_box > div.row > .body
        {display: table-cell;}
     div.multiple_choice_box > div.row > div.button, div.checkboxes_box > div.row
        {padding-right: 1em;
         vertical-align: middle;
         text-align: left;}
-    div.multiple_choice_box > div.row > div.body
+    div.multiple_choice_box > div.row > .body
        {text-align: left;
         vertical-align: middle;}
     div.checkboxes_box input[type = checkbox]
