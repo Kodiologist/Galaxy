@@ -448,6 +448,8 @@ $o = new Tversky
     head => do {local $/; <DATA>},
     footer => "\n\n\n</body></html>\n",
 
+    save_ip_and_wid => 0,
+
     mturk => $p{mturk},
     assume_consent => $p{assume_consent},
     password_hash => $p{password_hash},
