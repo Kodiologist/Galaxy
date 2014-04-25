@@ -403,10 +403,10 @@ sub orientation_and_experience ()
     sex_amount 'year_m', 'the past 12 months', 'men';
     sex_amount 'year_mtf', 'the past 12 months', 'trans-women';
     sex_amount 'year_ftm', 'the past 12 months', 'trans-men';
-    sex_amount 'total_f', 'total', 'women';
-    sex_amount 'total_m', 'total', 'men';
-    sex_amount 'total_mtf', 'total', 'trans-women';
-    sex_amount 'total_ftm', 'total', 'trans-men';}
+    sex_amount 'total_f', 'your whole life', 'women';
+    sex_amount 'total_m', 'your whole life', 'men';
+    sex_amount 'total_mtf', 'your whole life', 'trans-women';
+    sex_amount 'total_ftm', 'your whole life', 'trans-men';}
 
 # ** Finally
 
