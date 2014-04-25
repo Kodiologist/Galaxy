@@ -66,7 +66,7 @@ sub demographics ()
         ['Low', '5'] => 'Did not complete high school');
      
     $o->multiple_choice_page('income',
-        p 'What is your personal income per year (earned or from government benefits)?',
+        p 'What is your personal income per year, earned or from government benefits, in US dollars?',
         150 => '$150,000 or more',
         100 => '$100,000 to $149,999',
         80 => '$80,000 to $99,999',
@@ -80,7 +80,13 @@ sub demographics ()
         0 => 'Nothing');
 
     $o->yesno_page('ever_employed',
-        p 'Have you ever been employed?');}
+        p 'Have you ever been employed?');
+
+    $o->multiple_choice_page('english',
+        '<p>Which of the following best describes your knowledge of English?</p>',
+        Native => 'I am a native speaker of English.',
+        Fluent => 'I am <em>not</em> a native speaker of English, but I consider myself fluent.',
+        Neither => 'I am not fluent in English.');}
 
 # ** Sexual preferences
 
