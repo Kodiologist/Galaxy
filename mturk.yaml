@@ -1,0 +1,22 @@
+title: Structure of Sexual Orientation
+
+description: This is a survey about sexual feelings and sexual behavior. It should take no more than 30 minutes. Should you consent to the procedure, you will complete a questionnaire about sexual feelings, sexual behavior, and some other kinds of behavior (such as drug use).
+
+keywords:
+- survey
+- psychology
+- sex
+- sexuality
+
+reward: 2.00
+duration: 1 h
+
+qualifications:
+- Adult == 1
+- PercentAssignmentsApproved > 90
+- Locale == US
+
+question_frame_height: 450
+
+lifetime: 2 d
+approval_delay: 14 d
