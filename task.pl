@@ -384,22 +384,17 @@ sub orientation_and_experience ()
         ['?', 'E'] => 'Not sure',
         'Other' => FREE_RESPONSE);
 
-    $o->multiple_choice_page('attract_to_f',
-        p 'Which of the following best describes your feelings of sexual attraction to women?',
-        4 => 'Very sexually attracted',
-        3 => 'A good deal sexually attracted',
-        2 => 'Somewhat sexually attracted',
-        1 => 'A little sexually attracted',
-        0 => 'Not at all sexually attracted',
-        '?' => 'Not sure');
-    $o->multiple_choice_page('attract_to_m',
-        p 'Which of the following best describes your feelings of sexual attraction to men?',
-        4 => 'Very sexually attracted',
-        3 => 'A good deal sexually attracted',
-        2 => 'Somewhat sexually attracted',
-        1 => 'A little sexually attracted',
-        0 => 'Not at all sexually attracted',
-        '?' => 'Not sure');
+    sub attraction
+      {$o->multiple_choice_page("attract_to_$_[0]",
+            p "Which of the following best describes your feelings of sexual attraction to $_[1]?",
+            4 => 'Very sexually attracted',
+            3 => 'A good deal sexually attracted',
+            2 => 'Somewhat sexually attracted',
+            1 => 'A little sexually attracted',
+            0 => 'Not at all sexually attracted',
+            '?' => 'Not sure');}
+    attraction 'f', 'women';
+    attraction 'm', 'men';
 
     sub sex_amount
        {$o->nonneg_int_entry_page("sex_amount.$_[0]",
