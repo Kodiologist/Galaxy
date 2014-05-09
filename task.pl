@@ -119,6 +119,8 @@ my %pref_items = do
         mast_to_m	Masturbating a man (giving a handjob; jacking him off)
         mast_rec_f	[F] Receiving masturbation from a partner (having your clitoris or vagina touched by your partner's hands)
         mast_to_f	Masturbating a woman (touching a woman's clitoris or vagina with your hands)
+        bnip_rec	Having your breasts or nipples touched or sucked
+        bnip_to		Touching or sucking your partner's breasts or nipples
         objpen_rec	Being penetrated by an object, such as a dildo
         objpen_to	Penetrating your partner with an object, such as a dildo
         hug		Hugging
@@ -136,6 +138,8 @@ my %pref_items = do
         urine_to	Urinating on your sex partner as part of sex (watersports)
         urine_rec	Being urinated on by your sex partner as part of sex (watersports)
         leather		Using leather as part of sex
+        underwear	Sex involving underwear or lingerie
+        roleplay	Sexual role-playing
         insult_to	Calling your sex partner insulting names during sex (e.g., "slut")
         insult_rec	Being called insulting names during sex (e.g., "slut")
         semen_to_mouth	[M] Ejaculating (cumming) in your sex partner's mouth without a condom
@@ -155,6 +159,7 @@ my %pref_items = do
         porn_video_mm	Watching a video of two men having sex
         voyeur_known	Watching other people naked, masturbating, or having sex, when they know that you're watching
         voyeur_secret	Watching other people naked, masturbating, or having sex, when they don't know that you're watching
+        exhibit		Being watched naked, masturbating, or having sex, or feeling you might be seen
         incest		Sex with someone you're related to (a family member)
         in_rship	Sex with someone you're in a relationship with
         friend		Sex with a friend you aren't in a relationship with
