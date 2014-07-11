@@ -340,7 +340,7 @@ sub safe_sex ()
 
 sub externalizing ()
    {my %items =
-    # From: Patrick, C. J., Kramer, M. D., Krueger, R. F., & Markon, K. E. (in press). Optimizing efficiency of psychopathology assessment through quantitative modeling: Development of a brief form of the externalizing spectrum inventory. Psychological Assessment.
+    # From: Patrick, C. J., Kramer, M. D., Krueger, R. F., & Markon, K. E. (2013). Optimizing efficiency of psychopathology assessment through quantitative modeling: Development of a brief form of the Externalizing Spectrum Inventory. Psychological Assessment, 25(4), 1332–1348. doi:10.1037/a0034864
        ('001' => q{I have had problems at work because I was irresponsible.},
         '009' => q{I have stolen something out of a vehicle.},
         '010' => q{I get in trouble for not considering the consequences of my actions.},
