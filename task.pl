@@ -346,7 +346,7 @@ sub externalizing ()
         '010' => q{I get in trouble for not considering the consequences of my actions.},
         '019' => q{I have missed work without bothering to call in.},
         '028' => q{I have taken money from someone's purse or wallet without asking.},
-        '036' => q{Others have told me they are concerned about my lack of self-control. },
+        '036' => q{Others have told me they are concerned about my lack of self-control.},
         '041' => q{I often get bored quickly and lose interest.},
         '044' => q{I have taken items from a store without paying for them.},
         '049' => q{I've gotten in trouble because I missed too much school.},
