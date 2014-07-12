@@ -372,6 +372,100 @@ sub externalizing ()
             2 => 'Somewhat false',
             1 => 'False');}}
 
+# ** Big Five
+
+sub big_five
+   {my %ipip =
+    # From: http://ipip.ori.org/newNEODomainsKey.htm , http://ipip.ori.org/newScoringInstructions.htm
+       (nh1 => q{Often feel blue.},
+        nh2 => q{Dislike myself.},
+        nh3 => q{Am often down in the dumps.},
+        nh4 => q{Have frequent mood swings.},
+        nh5 => q{Panic easily.},
+        nl1 => q{Rarely get irritated.},
+        nl2 => q{Seldom feel blue.},
+        nl3 => q{Feel comfortable with myself.},
+        nl4 => q{Am not easily bothered by things.},
+        nl5 => q{Am very pleased with myself.},
+        eh1 => q{Feel comfortable around people.},
+        eh2 => q{Make friends easily.},
+        eh3 => q{Am skilled in handling social situations.},
+        eh4 => q{Am the life of the party.},
+        eh5 => q{Know how to captivate people.},
+        el1 => q{Have little to say.},
+        el2 => q{Keep in the background.},
+        el3 => q{Would describe my experiences as somewhat dull.},
+        el4 => q{Don't like to draw attention to myself.},
+        el5 => q{Don't talk a lot.},
+        oh1 => q{Believe in the importance of art.},
+        oh2 => q{Have a vivid imagination.},
+        oh3 => q{Tend to vote for liberal political candidates.},
+        oh4 => q{Carry the conversation to a higher level.},
+        oh5 => q{Enjoy hearing new ideas.},
+        ol1 => q{Am not interested in abstract ideas.},
+        ol2 => q{Do not like art.},
+        ol3 => q{Avoid philosophical discussions.},
+        ol4 => q{Do not enjoy going to art museums.},
+        ol5 => q{Tend to vote for conservative political candidates.},
+        ah1 => q{Have a good word for everyone.},
+        ah2 => q{Believe that others have good intentions.},
+        ah3 => q{Respect others.},
+        ah4 => q{Accept people as they are.},
+        ah5 => q{Make people feel at ease.},
+        al1 => q{Have a sharp tongue.},
+        al2 => q{Cut others to pieces.},
+        al3 => q{Suspect hidden motives in others.},
+        al4 => q{Get back at others.},
+        al5 => q{Insult people.},
+        ch1 => q{Am always prepared.},
+        ch2 => q{Pay attention to details.},
+        ch3 => q{Get chores done right away.},
+        ch4 => q{Carry out my plans.},
+        ch5 => q{Make plans and stick to them.},
+        cl1 => q{Waste my time.},
+        cl2 => q{Find it difficult to get down to work.},
+        cl3 => q{Do just enough work to get by.},
+        cl4 => q{Don't see things through.},
+        cl5 => q{Shirk my duties.});
+
+    $o->assign_permutation('ipip_big5_10per_permutation',
+        ',', keys %ipip);
+    foreach (split qr/,/, $o->getu('ipip_big5_10per_permutation'))
+       {$o->multiple_choice_page("ipip_big5_10per.$_",
+            cat
+              (p 'Rate the accuracy of each statement about yourself.',
+               p $ipip{$_}),
+            5 => 'Very accurate',
+            4 => 'Moderately accurate',
+            3 => 'Neither inaccurate nor accurate',
+            2 => 'Moderately inaccurate',
+            1 => 'Very inaccurate');}
+
+    my %tipi =
+    # From: Gosling, S. D., Rentfrow, P. J., & Swann, W. B., Jr. (2003). A very brief measure of the Big-Five personality domains. Journal of Research in Personality, 37(6), 504–528. doi:10.1016/S0092-6566(03)00046-1
+    # but with different response labels to be more like the preferences questionnaire.
+       (eh => 'Extraverted, enthusiastic.',
+        al => 'Critical, quarrelsome.',
+        ch => 'Dependable, self-disciplined.',
+        nh => 'Anxious, easily upset.',
+        oh => 'Open to new experiences, complex.',
+        el => 'Reserved, quiet.',
+        ah => 'Sympathetic, warm.',
+        cl => 'Disorganized, careless.',
+        nl => 'Calm, emotionally stable.',
+        ol => 'Conventional, uncreative.');
+
+    $o->assign_permutation('tipi_permutation',
+        ',', keys %tipi);
+    foreach (split qr/,/, $o->getu('tipi_permutation'))
+       {$o->discrete_rating_page("tipi.$_",
+            cat
+              (p 'Indicate the extent to which you agree or disagree with each statement. You should rate the extent to which the pair of traits applies to you, even if one characteristic applies more strongly than the other.',
+               p 'I see myself as…',
+               p $tipi{$_}),
+            scale_points => 7,
+            anchors => ['Not at all accurate', 'Somewhat accurate', 'Very accurate']);}}
+
 # ** Sexual orientation and sexual experience
 
 sub orientation_and_experience ()
@@ -467,6 +561,7 @@ $o->run(sub
     drug_use;
     safe_sex;
     externalizing;
+    big_five;
     orientation_and_experience;
     finally;});
 
